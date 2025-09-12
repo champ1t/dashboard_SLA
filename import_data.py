@@ -1,3 +1,4 @@
+# fast_import_fixed.py
 import psycopg2
 import csv
 import json
@@ -19,15 +20,11 @@ def fast_import():
         
         # map state ให้ตรงกับ constraint (ตัวพิมพ์เล็ก)
         def map_status(val):
-            val_str = str(val).strip().lower()
-            
-            # ตรวจสอบค่าจริงใน CSV
-            print(f"Debug: raw value = '{val}' -> '{val_str}'")
-            
-            if val_str in ["1", "up", "online", "true"]:
-                return "up"
-            elif val_str in ["0", "down", "offline", "false"]:
+            val_str = str(val).strip()
+            if val_str == "0":
                 return "down"
+            elif val_str == "1":
+                return "up"
             else:
                 return "unknown"
         
