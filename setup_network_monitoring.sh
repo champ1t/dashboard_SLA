@@ -20,7 +20,7 @@ psql -d network_monitoring -f create_views.sql
 echo "📊 เริ่มต้น Apache Superset..."
 docker-compose up -d
 
-# 5. 初始化 Superset
+# 5. Superset
 echo "⚙️ กำลังตั้งค่า Superset..."
 sleep 30
 docker exec -it superset superset db upgrade
